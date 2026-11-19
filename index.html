@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Роман Клименко — таргетолог Meta Ads. Ведення рекламних кабінетів Facebook та Instagram для малого бізнесу, сфери послуг та інтернет-магазинів: запуск, оптимізація, аналітика.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://klymenko.pro/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://klymenko.pro/">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:title" content="Роман Клименко — таргетолог Meta Ads">
+<meta property="og:description" content="Ведення рекламних кабінетів Meta, аудит кабінету, аналітика та трекінг. 9 років досвіду.">
+<meta name="theme-color" content="#0d0908">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230d0908'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-size='15' font-weight='700' fill='%23ff5a1f' text-anchor='middle'%3ERK%3C/text%3E%3C/svg%3E">
+<title>Роман Клименко — Meta Ads</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Unbounded:wght@600;700&display=swap">
+<style>
+/* RK design — тёмная сцена, один огненный акцент, матовое стекло.
+   Макет: узкая колонка 1100px, секции в вертикальном ритме 96/64, карточки на стекле. */
+:root{
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg-000:#070505; --bg-100:#0d0908; --bg-200:#151010; --bg-300:#211917;
+  --glass-fill:rgba(255,255,255,.05); --glass-fill-strong:rgba(255,255,255,.09);
+  --glass-border:rgba(255,255,255,.12); --glass-highlight:rgba(255,255,255,.22);
+  --ink:#f6f2ef; --ink-muted:#b3aaa4; --ink-subtle:#8a817b;
+  --ember-100:#ffd9c4; --ember-300:#ff9a5c; --ember-500:#ff5a1f; --ember-600:#e8480f;
+  --ember-700:#b8360a; --ember-900:#3d1406; --ember-glow:rgba(255,90,31,.45);
+  --on-ember:#170804; --success:#4ade80;
+  --font-sans:"Onest","Manrope",system-ui,sans-serif;
+  --font-wide:"Unbounded","Onest",system-ui,sans-serif;
+  --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px;
+  --space-12:48px; --space-16:64px; --space-24:96px;
+  --radius-sm:8px; --radius-md:14px; --radius-lg:20px; --radius-xl:28px; --radius-pill:999px;
+  --shadow-glass:inset 0 1px 0 rgba(255,255,255,.10), 0 24px 60px rgba(0,0,0,.45);
+  --shadow-glow:0 0 0 1px rgba(255,90,31,.35), 0 0 32px rgba(255,90,31,.45);
+  --shadow-glow-lg:0 0 120px 20px rgba(255,90,31,.30);
+  --blur-md:16px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-100);color:var(--ink);font-family:var(--font-sans);
+  font-weight:500;font-size:16px;line-height:24px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:var(--space-24)}
+@media (max-width:760px){section{padding-block:var(--space-16)}}
+
+/* ——— типографика ——— */
+.label{font:600 12px/16px var(--font-sans);letter-spacing:.06em;color:var(--ink-subtle);
+  text-transform:uppercase;margin:0}
+.bracket::before{content:"[ "}.bracket::after{content:" ]"}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-size:clamp(34px,7vw,80px);line-height:.95;font-weight:800;letter-spacing:-.035em}
+h2{font-size:clamp(26px,4.4vw,40px);line-height:1.12;font-weight:700;letter-spacing:-.02em}
+h3{font-size:20px;line-height:26px;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+.lead{font-size:18px;line-height:28px;color:var(--ink-muted);max-width:60ch}
+.muted{color:var(--ink-muted)}
+.small{font-size:14px;line-height:20px}
+.accent{color:var(--ember-500)}
+.ph{border-bottom:1px dashed var(--ember-700);cursor:help}
+
+/* ——— атмосфера ——— */
+.glow{position:absolute;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,var(--ember-glow),transparent);filter:blur(40px);z-index:0}
+
+/* ——— элементы ——— */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);
+  min-height:48px;padding:0 var(--space-6);border-radius:var(--radius-pill);
+  border:1px solid transparent;font:700 15px/1 var(--font-sans);text-decoration:none;
+  cursor:pointer;transition:background .2s,border-color .2s}
+.btn--primary{background:var(--ember-500);color:var(--on-ember);box-shadow:var(--shadow-glow)}
+.btn--primary:hover{background:var(--ember-600)}
+.btn--glass{background:var(--glass-fill);color:var(--ink);border-color:var(--glass-border);
+  backdrop-filter:blur(var(--blur-md));-webkit-backdrop-filter:blur(var(--blur-md))}
+.btn--glass:hover{background:var(--glass-fill-strong)}
+.btn:focus-visible{outline:2px solid var(--ember-300);outline-offset:3px}
+.btn--sm{min-height:40px;padding:0 var(--space-4);font-size:14px}
+.glass{background:var(--glass-fill);border:1px solid var(--glass-border);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-glass);
+  backdrop-filter:blur(var(--blur-md));-webkit-backdrop-filter:blur(var(--blur-md))}
+.icon{flex:none;width:56px;height:56px;border-radius:var(--radius-pill);display:grid;place-items:center;
+  color:var(--ember-300);background:radial-gradient(circle at 50% 40%,var(--ember-700),var(--ember-900) 70%);
+  box-shadow:var(--shadow-glow)}
+.icon svg{width:26px;height:26px}
+
+/* ——— шапка ——— */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);
+  z-index:20;background:var(--bg-100)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;
+  background:rgba(13,9,8,.82);backdrop-filter:blur(var(--blur-md));
+  -webkit-backdrop-filter:blur(var(--blur-md));border-bottom:1px solid var(--glass-border)}
+.bar{display:flex;align-items:center;gap:var(--space-6);min-height:68px}
+.wordmark{font-family:var(--font-wide);font-weight:700;font-size:20px;letter-spacing:-.01em;
+  text-decoration:none;margin-right:auto}
+nav{display:flex;gap:var(--space-6)}
+nav a{font-size:14px;color:var(--ink-muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+@media (max-width:860px){nav{display:none}}
+
+/* ——— герой ——— */
+.hero{position:relative;overflow:hidden;padding-block:var(--space-24) var(--space-16)}
+.hero .glow{width:720px;height:720px;top:-320px;right:-180px;opacity:.55}
+.hero__inner{position:relative;z-index:1;display:grid;gap:var(--space-8);max-width:900px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:var(--space-3)}
+
+/* ——— сетки ——— */
+.grid-3{display:grid;gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.head{display:grid;gap:var(--space-3);margin-bottom:var(--space-12);max-width:70ch}
+.card{padding:var(--space-6);display:grid;gap:var(--space-4);align-content:start;min-width:0}
+.card ul{margin:0;padding-left:1.1em;display:grid;gap:6px;color:var(--ink-muted);font-size:14px;line-height:20px}
+
+/* ——— шаги ——— */
+.steps{display:grid;gap:var(--space-3)}
+.step{display:flex;align-items:center;gap:var(--space-6);padding:var(--space-4) var(--space-6);min-width:0}
+.step__body{flex:1;min-width:0}
+.step__num{font:400 clamp(32px,6vw,48px)/1 var(--font-sans);color:var(--ink-subtle);
+  padding-left:var(--space-6);border-left:1px solid var(--glass-border);flex:none}
+@media (max-width:560px){
+  .step{flex-wrap:wrap;gap:var(--space-4)}
+  .step__num{padding-left:0;border-left:0}
+}
+
+/* ——— цифры ——— */
+.stats{display:grid;gap:var(--space-8);grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  padding:var(--space-12) var(--space-6);border-radius:var(--radius-xl)}
+.stat__value{font:400 clamp(36px,6vw,56px)/1 var(--font-sans);letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
+.stat__value b{font-weight:400;color:var(--ember-500)}
+.stat__label{font-size:14px;line-height:20px;color:var(--ink-muted);margin-top:var(--space-2);max-width:24ch}
+
+/* ——— кейсы ——— */
+.case{padding:var(--space-6);display:grid;gap:var(--space-4);align-content:start;min-width:0}
+.case__tag{display:inline-flex;align-items:center;align-self:start;height:32px;padding:0 var(--space-4);
+  border-radius:var(--radius-pill);font:600 13px/1 var(--font-sans);
+  background:var(--ember-900);border:1px solid var(--ember-500);color:var(--ember-300)}
+.case dl{margin:0;display:grid;gap:var(--space-3)}
+.case dt{font:600 12px/16px var(--font-sans);letter-spacing:.06em;color:var(--ink-subtle);text-transform:uppercase}
+.case dd{margin:0;font-size:15px;line-height:22px;color:var(--ink-muted)}
+.case dd b{color:var(--ink);font-weight:700}
+
+/* ——— контакты ——— */
+.contact{position:relative;overflow:hidden;border-radius:var(--radius-xl);
+  padding:var(--space-12) var(--space-6);display:grid;gap:var(--space-8);text-align:center;
+  justify-items:center;background:var(--bg-200);border:1px solid var(--glass-border)}
+.contact .glow{width:520px;height:520px;bottom:-300px;left:50%;transform:translateX(-50%);opacity:.5}
+.contact__inner{position:relative;z-index:1;display:grid;gap:var(--space-6);justify-items:center}
+.copyrow{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center;justify-content:center;
+  padding:var(--space-2) var(--space-2) var(--space-2) var(--space-6);border-radius:var(--radius-pill);
+  background:var(--glass-fill);border:1px solid var(--glass-border)}
+.copyrow code{font-family:var(--font-sans);font-size:15px;font-weight:600}
+.copybtn{min-height:36px;padding:0 var(--space-4);font-size:13px}
+
+/* ——— футер ——— */
+footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding-block:var(--space-12)}
+.foot{display:flex;flex-wrap:wrap;gap:var(--space-6);justify-content:space-between;align-items:flex-start}
+.foot a{color:var(--ink-muted);text-decoration:none;font-size:14px}
+.foot a:hover{color:var(--ink)}
+.foot__legal{display:grid;gap:6px;font-size:14px;line-height:20px;color:var(--ink-subtle)}
+.foot__links{display:flex;flex-wrap:wrap;gap:var(--space-6)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="wordmark" href="#top">RK</a>
+    <nav>
+      <a href="#services">Послуги</a>
+      <a href="#process">Як працюю</a>
+      <a href="#cases">Кейси</a>
+      <a href="#contact">Контакти</a>
+    </nav>
+    <a class="btn btn--primary btn--sm" href="https://t.me/kr8080" target="_blank" rel="noopener">Написати</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="wrap hero__inner">
+      <p class="label bracket">таргетолог Meta Ads · Facebook та Instagram</p>
+      <h1>Реклама, яка приносить заявки, а не <span class="accent">покази.</span></h1>
+      <p class="lead">Веду рекламні кабінети Meta для малого бізнесу, сфери послуг та інтернет-магазинів. Запуск, щоденна оптимізація і зрозумілий звіт — скільки витрачено, скільки заявок, яка вартість однієї.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://t.me/kr8080" target="_blank" rel="noopener">
+          Написати в Telegram
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+        <a class="btn btn--glass" href="#services">Що входить у роботу</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="label bracket">послуги</p>
+        <h2>Три напрями, за які <span class="accent">відповідаю</span></h2>
+        <p class="lead">Працюю в кабінеті клієнта: доступи залишаються у власника бізнесу, бюджет іде напряму з його картки.</p>
+      </div>
+      <div class="grid-3">
+
+        <article class="glass card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 15v2M11 11v6M15 8v9M19 5v12"/></svg>
+          </div>
+          <h3>Ведення Meta Ads</h3>
+          <p class="small muted">Повний цикл: стратегія, структура кабінету, запуск кампаній і щоденна оптимізація.</p>
+          <ul>
+            <li>Медіаплан і розподіл бюджету</li>
+            <li>Кампанії на заявки, повідомлення, продажі</li>
+            <li>Тести аудиторій і креативів</li>
+            <li>Щотижневий звіт із цифрами</li>
+          </ul>
+        </article>
+
+        <article class="glass card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </div>
+          <h3>Аудит кабінету</h3>
+          <p class="small muted">Разова робота, коли реклама вже працює, але результат не влаштовує.</p>
+          <ul>
+            <li>Розбір структури, ставок і бюджетів</li>
+            <li>Перевірка трекінгу та подій</li>
+            <li>Аналіз креативів і аудиторій</li>
+            <li>План виправлень за пріоритетами</li>
+          </ul>
+        </article>
+
+        <article class="glass card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12z"/><path d="M12 2v10h10"/></svg>
+          </div>
+          <h3>Аналітика та трекінг</h3>
+          <p class="small muted">Щоб рішення ухвалювалися за даними, а не за відчуттями.</p>
+          <ul>
+            <li>Meta Pixel і Conversions API</li>
+            <li>Налаштування подій і конверсій</li>
+            <li>Звірка заявок із CRM</li>
+            <li>Звітність під показники бізнесу</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="head">
+        <p class="label bracket">як працюю</p>
+        <h2>Чотири кроки від нуля до <span class="accent">стабільних заявок</span></h2>
+      </div>
+      <div class="steps">
+
+        <div class="glass step">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </div>
+          <div class="step__body">
+            <h3>Аудит і вхідні дані</h3>
+            <p class="small muted">Дивлюся кабінет, продукт, ціни та попередню статистику. Фіксуємо, що вважаємо результатом і скільки коштує заявка.</p>
+          </div>
+          <div class="step__num">01</div>
+        </div>
+
+        <div class="glass step">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20h-20"/></svg>
+          </div>
+          <div class="step__body">
+            <h3>Стратегія і запуск</h3>
+            <p class="small muted">Збираю структуру кабінету, аудиторії та креативи. Налаштовую трекінг і запускаю перші кампанії з контрольованим бюджетом.</p>
+          </div>
+          <div class="step__num">02</div>
+        </div>
+
+        <div class="glass step">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M12 8V4M5 20v-4M5 10V4M19 20v-9M19 5V4"/><circle cx="12" cy="11" r="2"/><circle cx="5" cy="13" r="2"/><circle cx="19" cy="8" r="2"/></svg>
+          </div>
+          <div class="step__body">
+            <h3>Оптимізація</h3>
+            <p class="small muted">Щодня дивлюся вартість заявки й частоту показів. Вимикаю те, що не працює, масштабую те, що дає результат. Нові креативи — до вигорання, а не після.</p>
+          </div>
+          <div class="step__num">03</div>
+        </div>
+
+        <div class="glass step">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h3"/></svg>
+          </div>
+          <div class="step__body">
+            <h3>Звітність</h3>
+            <p class="small muted">Щотижня — таблиця: витрати, заявки, вартість заявки, динаміка до минулого тижня. Без графіків заради графіків.</p>
+          </div>
+          <div class="step__num">04</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="numbers">
+    <div class="wrap">
+      <div class="glass stats">
+        <div>
+          <div class="stat__value"><b>9</b> років</div>
+          <p class="stat__label">у Meta Ads — від локальних послуг до e-commerce</p>
+        </div>
+        <div>
+          <div class="stat__value"><b>160+</b></div>
+          <p class="stat__label">рекламних кабінетів під керуванням</p>
+        </div>
+        <div>
+          <div class="stat__value"><b>$375K+</b></div>
+          <p class="stat__label">рекламного бюджету освоєно</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases">
+    <div class="wrap">
+      <div class="head">
+        <p class="label bracket">кейси</p>
+        <h2>Що зазвичай <span class="accent">змінюється</span> за перші місяці</h2>
+        <p class="lead">Проєкти знеособлені: назви клієнтів не публікую без їхньої згоди.</p>
+      </div>
+      <div class="grid-3">
+
+        <article class="glass case">
+          <span class="case__tag">Туризм, Україна</span>
+          <dl>
+            <dt>Завдання</dt>
+            <dd>Потік заявок на тури цілий рік, із піками під сезон і святкові заїзди.</dd>
+            <dt>Що зробив</dt>
+            <dd class="ph" title="Перевірити та дописати: що саме робилося в кабінеті">Побудував структуру кабінету під напрямки відпочинку, вів кампанії на заявки та продажі паралельно, тримав оновлення креативів під кожен сезон.</dd>
+            <dt>Результат</dt>
+            <dd><b>36 249 заявок по $6,27</b> і 5 969 продажів при витратах $227 206</dd>
+          </dl>
+        </article>
+
+        <article class="glass case">
+          <span class="case__tag">Виробництво, Польща</span>
+          <dl>
+            <dt>Завдання</dt>
+            <dd>Масштабний потік заявок на обладнання при великому щомісячному бюджеті.</dd>
+            <dt>Що зробив</dt>
+            <dd class="ph" title="Перевірити та дописати: що саме робилося в кабінеті">Вів кампанії на заявки з лід-формами, розділив аудиторії за типами продукту, тримав конвеєр креативів, щоб ціна заявки не росла на обсязі.</dd>
+            <dt>Результат</dt>
+            <dd><b>26 297 заявок по $3,93</b> при витратах $103 332</dd>
+          </dl>
+        </article>
+
+        <article class="glass case">
+          <span class="case__tag">Послуги для бізнесу, Польща</span>
+          <dl>
+            <dt>Завдання</dt>
+            <dd>Великий обсяг заявок на супровід бізнесу за прогнозованою ціною.</dd>
+            <dt>Що зробив</dt>
+            <dd class="ph" title="Перевірити та дописати: що саме робилося в кабінеті">Поставив лід-форми з кваліфікаційними питаннями, розділив аудиторії за мовами, тримав регулярне оновлення креативів.</dd>
+            <dt>Результат</dt>
+            <dd><b>5 646 заявок по 10,7 PLN</b> при витратах 60 321 PLN</dd>
+          </dl>
+        </article>
+
+        <article class="glass case">
+          <span class="case__tag">Виробництво сходів, Іспанія</span>
+          <dl>
+            <dt>Завдання</dt>
+            <dd>Стабільний потік заявок на сходи під замовлення по всій Іспанії.</dd>
+            <dt>Що зробив</dt>
+            <dd class="ph" title="Перевірити та дописати: що саме робилося в кабінеті">Розвів трафік на два кабінети за регіонами, зібрав лід-форми з уточнювальними питаннями, тестував креативи під різні типи сходів.</dd>
+            <dt>Результат</dt>
+            <dd><b>2 341 заявка по €4,70</b> при витратах €10 980</dd>
+          </dl>
+        </article>
+
+        <article class="glass case">
+          <span class="case__tag">Дитячий туризм, Україна</span>
+          <dl>
+            <dt>Завдання</dt>
+            <dd>Заявки на дитячі тури з коротким вікном продажу перед сезоном.</dd>
+            <dt>Що зробив</dt>
+            <dd class="ph" title="Перевірити та дописати: що саме робилося в кабінеті">Запускав кампанії під конкретні заїзди, тримав частоту показів під контролем, оновлював креативи до вигорання.</dd>
+            <dt>Результат</dt>
+            <dd><b>357 заявок по $5,71</b> при витратах $2 037</dd>
+          </dl>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div class="glow"></div>
+        <div class="contact__inner">
+          <p class="label bracket">контакти</p>
+          <h2>Розкажіть про бізнес — відповім, чи <span class="accent">потягне</span> реклама</h2>
+          <p class="lead" style="text-align:center">Напишіть у Telegram: що продаєте, у якому місті та який бюджет плануєте. Скажу чесно, чи є сенс запускатися, ще до будь-якої оплати.</p>
+          <a class="btn btn--primary" href="https://t.me/kr8080" target="_blank" rel="noopener">
+            Написати в Telegram
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+          <div class="copyrow">
+            <code id="mail" data-a="klimenko.official" data-b="gmail" data-c="com">показати пошту</code>
+            <button class="btn btn--glass copybtn" id="copy" type="button">Показати</button>
+          </div>
+          <p class="small" style="color:var(--ink-subtle)">Вартість — після аудиту: вона залежить від ніші, географії та обсягу робіт.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="foot__legal">
+      <strong style="font-family:var(--font-wide);font-weight:700;font-size:18px;color:var(--ink)">RK</strong>
+      <span>ФОП Клименко Роман Олександрович</span>
+      <span>Сайт створено у 2026 році</span>
+      <span>© 2026. Усі права захищені.</span>
+    </div>
+    <div class="foot__links">
+      <a href="privacy.html">Політика конфіденційності</a>
+      <a href="terms.html">Договір оферти</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('copy'), mail=document.getElementById('mail');
+  if(!btn||!mail)return;
+  var shown=false;
+  function address(){
+    return [mail.dataset.a,'@',mail.dataset.b,'.',mail.dataset.c].join('');
+  }
+  function flash(text,back){
+    btn.textContent=text;
+    setTimeout(function(){btn.textContent=back},1800);
+  }
+  btn.addEventListener('click',function(){
+    if(!shown){
+      mail.textContent=address();
+      shown=true;
+      btn.textContent='Копіювати';
+      return;
+    }
+    var text=address();
+    try{
+      navigator.clipboard.writeText(text).then(function(){flash('Скопійовано','Копіювати')},select);
+    }catch(e){select()}
+    function select(){
+      var r=document.createRange();r.selectNodeContents(mail);
+      var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);
+      flash('Виділено — скопіюйте','Копіювати');
+    }
+  });
+})();
+</script>
+</body>
+</html>
