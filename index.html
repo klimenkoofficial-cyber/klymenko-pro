@@ -19,15 +19,13 @@
 /* RK design — тёмная сцена, один огненный акцент, матовое стекло.
    Макет: узкая колонка 1100px, секции в вертикальном ритме 96/64, карточки на стекле. */
 :root{
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
   --bg-000:#070505; --bg-100:#0d0908; --bg-200:#151010; --bg-300:#211917;
   --glass-fill:rgba(255,255,255,.05); --glass-fill-strong:rgba(255,255,255,.09);
   --glass-border:rgba(255,255,255,.12); --glass-highlight:rgba(255,255,255,.22);
   --ink:#f6f2ef; --ink-muted:#b3aaa4; --ink-subtle:#8a817b;
   --ember-100:#ffd9c4; --ember-300:#ff9a5c; --ember-500:#ff5a1f; --ember-600:#e8480f;
   --ember-700:#b8360a; --ember-900:#3d1406; --ember-glow:rgba(255,90,31,.45);
-  --on-ember:#170804; --success:#4ade80;
+  --on-ember:#170804; --header-h:69px; --success:#4ade80;
   --font-sans:"Onest","Manrope",system-ui,sans-serif;
   --font-wide:"Unbounded","Onest",system-ui,sans-serif;
   --space-2:8px; --space-3:12px; --space-4:16px; --space-6:24px; --space-8:32px;
@@ -44,16 +42,19 @@ body{margin:0;background:var(--bg-100);color:var(--ink);font-family:var(--font-s
   font-weight:500;font-size:16px;line-height:24px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%}
 a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ember-300);outline-offset:3px;border-radius:4px}
 .wrap{max-width:1100px;margin:0 auto;
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px))}
-section{padding-block:var(--space-24)}
+section{padding-block:var(--space-24);scroll-margin-top:calc(var(--header-h) + 16px)}
 @media (max-width:760px){section{padding-block:var(--space-16)}}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
 /* ——— типографика ——— */
 .label{font:600 12px/16px var(--font-sans);letter-spacing:.06em;color:var(--ink-subtle);
   text-transform:uppercase;margin:0}
-.bracket::before{content:"[ "}.bracket::after{content:" ]"}
+.bracket::before{content:"[\00a0"}.bracket::after{content:"\00a0]"}
 h1,h2,h3{margin:0;text-wrap:balance}
 h1{font-size:clamp(34px,7vw,80px);line-height:.95;font-weight:800;letter-spacing:-.035em}
 h2{font-size:clamp(26px,4.4vw,40px);line-height:1.12;font-weight:700;letter-spacing:-.02em}
@@ -80,7 +81,7 @@ p{margin:0}
   backdrop-filter:blur(var(--blur-md));-webkit-backdrop-filter:blur(var(--blur-md))}
 .btn--glass:hover{background:var(--glass-fill-strong)}
 .btn:focus-visible{outline:2px solid var(--ember-300);outline-offset:3px}
-.btn--sm{min-height:40px;padding:0 var(--space-4);font-size:14px}
+.btn--sm{min-height:44px;padding:0 var(--space-4);font-size:14px}
 .glass{background:var(--glass-fill);border:1px solid var(--glass-border);
   border-radius:var(--radius-lg);box-shadow:var(--shadow-glass);
   backdrop-filter:blur(var(--blur-md));-webkit-backdrop-filter:blur(var(--blur-md))}
@@ -97,14 +98,26 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;
   -webkit-backdrop-filter:blur(var(--blur-md));border-bottom:1px solid var(--glass-border)}
 .bar{display:flex;align-items:center;gap:var(--space-6);min-height:68px}
 .wordmark{font-family:var(--font-wide);font-weight:700;font-size:20px;letter-spacing:-.01em;
-  text-decoration:none;margin-right:auto}
+  text-decoration:none;margin-right:auto;display:inline-flex;align-items:center;
+  min-height:44px;padding-inline:4px}
 nav{display:flex;gap:var(--space-6)}
-nav a{font-size:14px;color:var(--ink-muted);text-decoration:none}
+nav a{font-size:14px;color:var(--ink-muted);text-decoration:none;
+  display:inline-flex;align-items:center;min-height:44px;white-space:nowrap}
 nav a:hover{color:var(--ink)}
-@media (max-width:860px){nav{display:none}}
+@media (max-width:860px){
+  :root{--header-h:118px}
+  .bar{flex-wrap:wrap;gap:var(--space-4);min-height:0;padding-block:10px}
+  nav{order:3;width:100%;gap:var(--space-6);overflow-x:auto;scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;border-top:1px solid var(--glass-border);
+    margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+    padding-inline:max(16px,env(safe-area-inset-left,0px))}
+  nav::-webkit-scrollbar{display:none}
+  nav a{min-height:44px}
+}
 
 /* ——— герой ——— */
 .hero{position:relative;overflow:hidden;padding-block:var(--space-24) var(--space-16)}
+@media (max-width:760px){.hero{padding-block:var(--space-8) var(--space-12)}}
 .hero .glow{width:720px;height:720px;top:-320px;right:-180px;opacity:.55}
 .hero__inner{position:relative;z-index:1;display:grid;gap:var(--space-8);max-width:900px}
 .hero__cta{display:flex;flex-wrap:wrap;gap:var(--space-3)}
@@ -154,12 +167,13 @@ nav a:hover{color:var(--ink)}
   padding:var(--space-2) var(--space-2) var(--space-2) var(--space-6);border-radius:var(--radius-pill);
   background:var(--glass-fill);border:1px solid var(--glass-border)}
 .copyrow code{font-family:var(--font-sans);font-size:15px;font-weight:600}
-.copybtn{min-height:36px;padding:0 var(--space-4);font-size:13px}
+.copybtn{min-height:44px;padding:0 var(--space-4);font-size:13px}
 
 /* ——— футер ——— */
 footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding-block:var(--space-12)}
 .foot{display:flex;flex-wrap:wrap;gap:var(--space-6);justify-content:space-between;align-items:flex-start}
-.foot a{color:var(--ink-muted);text-decoration:none;font-size:14px}
+.foot a{color:var(--ink-muted);text-decoration:none;font-size:14px;
+  display:inline-flex;align-items:center;min-height:44px}
 .foot a:hover{color:var(--ink)}
 .foot__legal{display:grid;gap:6px;font-size:14px;line-height:20px;color:var(--ink-subtle)}
 .foot__links{display:flex;flex-wrap:wrap;gap:var(--space-6)}
@@ -191,7 +205,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
       <div class="hero__cta">
         <a class="btn btn--primary" href="https://t.me/kr8080" target="_blank" rel="noopener">
           Написати в Telegram
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
         <a class="btn btn--glass" href="#services">Що входить у роботу</a>
       </div>
@@ -209,7 +223,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
 
         <article class="glass card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 15v2M11 11v6M15 8v9M19 5v12"/></svg>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 15v2M11 11v6M15 8v9M19 5v12"/></svg>
           </div>
           <h3>Ведення Meta Ads</h3>
           <p class="small muted">Повний цикл: стратегія, структура кабінету, запуск кампаній і щоденна оптимізація.</p>
@@ -223,7 +237,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
 
         <article class="glass card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           </div>
           <h3>Аудит кабінету</h3>
           <p class="small muted">Разова робота, коли реклама вже працює, але результат не влаштовує.</p>
@@ -237,7 +251,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
 
         <article class="glass card">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12z"/><path d="M12 2v10h10"/></svg>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10H12z"/><path d="M12 2v10h10"/></svg>
           </div>
           <h3>Аналітика та трекінг</h3>
           <p class="small muted">Щоб рішення ухвалювалися за даними, а не за відчуттями.</p>
@@ -263,7 +277,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
 
         <div class="glass step">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
           </div>
           <div class="step__body">
             <h3>Аудит і вхідні дані</h3>
@@ -274,7 +288,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
 
         <div class="glass step">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20h-20"/></svg>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20h-20"/></svg>
           </div>
           <div class="step__body">
             <h3>Стратегія і запуск</h3>
@@ -285,7 +299,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
 
         <div class="glass step">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M12 8V4M5 20v-4M5 10V4M19 20v-9M19 5V4"/><circle cx="12" cy="11" r="2"/><circle cx="5" cy="13" r="2"/><circle cx="19" cy="8" r="2"/></svg>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M12 8V4M5 20v-4M5 10V4M19 20v-9M19 5V4"/><circle cx="12" cy="11" r="2"/><circle cx="5" cy="13" r="2"/><circle cx="19" cy="8" r="2"/></svg>
           </div>
           <div class="step__body">
             <h3>Оптимізація</h3>
@@ -296,7 +310,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
 
         <div class="glass step">
           <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h3"/></svg>
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15h6M9 11h3"/></svg>
           </div>
           <div class="step__body">
             <h3>Звітність</h3>
@@ -411,7 +425,7 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
           <p class="lead" style="text-align:center">Напишіть у Telegram: що продаєте, у якому місті та який бюджет плануєте. Скажу чесно, чи є сенс запускатися, ще до будь-якої оплати.</p>
           <a class="btn btn--primary" href="https://t.me/kr8080" target="_blank" rel="noopener">
             Написати в Telegram
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
           </a>
           <div class="copyrow">
             <code id="mail" data-a="info" data-b="klymenko" data-c="pro">показати пошту</code>
@@ -471,5 +485,3 @@ footer{border-top:1px solid var(--glass-border);background:var(--bg-200);padding
   });
 })();
 </script>
-</body>
-</html>
